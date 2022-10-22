@@ -7,6 +7,8 @@ import type { Config } from './Config'
 
 import { fixMinecraftUsername } from './lib/util'
 
+import nickname from './nickname.json';
+
 export type LogLine = {
   username: string
   message: string
@@ -68,6 +70,10 @@ class MinecraftHandler {
       }
 
       const username = fixMinecraftUsername(matches[1])
+
+      const word = (<any>nickname).username;
+      console.log(word); // output 'testing'
+
       const message = matches[2]
       if (this.config.DEBUG) {
         console.log('[DEBUG] Username: ' + matches[1])
